@@ -1,0 +1,6 @@
+crow
+*.[oa]
+pkg/
+*.pkg.tar.xz
+patches
+.history/
