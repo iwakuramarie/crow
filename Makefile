@@ -11,15 +11,15 @@ all: options crow
 
 options:
 	@echo crow build options:
-	@echo "CFLAGS  = $(STCFLAGS)"
-	@echo "LDFLAGS = $(STLDFLAGS)"
+	@echo "CFLAGS  = $(CROWCFLAGS)"
+	@echo "LDFLAGS = $(CROWLDFLAGS)"
 	@echo "CC      = $(CC)"
 
 config.h:
 	cp config.def.h config.h
 
 .c.o:
-	$(CC) $(STCFLAGS) -c $<
+	$(CC) $(CROWCFLAGS) -c $<
 
 crow.o: config.h crow.h win.h
 x.o: arg.h config.h crow.h win.h hb.h
@@ -29,7 +29,7 @@ boxdraw.o: config.h crow.h boxdraw_data.h
 $(OBJ): config.h config.mk
 
 crow: $(OBJ)
-	$(CC) -o $@ $(OBJ) $(STLDFLAGS)
+	$(CC) -o $@ $(OBJ) $(CROWLDFLAGS)
 
 clean:
 	rm -f crow $(OBJ) crow-$(VERSION).tar.gz *.o *.orig *.rej
